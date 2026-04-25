@@ -1,0 +1,45 @@
+{% extends "iuu/base.html" %}
+
+{% block title %}Профиль — IUU{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width:500px">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
+    <div>
+      <div class="card-title">{{ user.get_full_name }}</div>
+      <div class="card-hint" style="margin-bottom:0">@{{ user.username }}</div>
+    </div>
+    <span class="badge">{{ user.grade }} класс</span>
+  </div>
+
+  <hr class="divider">
+
+  <div class="profile-grid">
+    <div class="profile-item">
+      <div class="profile-key">Email</div>
+      <div class="profile-val">{{ user.email }}</div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-key">GPA</div>
+      <div class="profile-val">{{ user.gpa }}</div>
+    </div>
+    <div class="profile-item" style="grid-column:1/-1">
+      <div class="profile-key">Школа</div>
+      <div class="profile-val">{{ user.school }}</div>
+    </div>
+    <div class="profile-item">
+      <div class="profile-key">Дата регистрации</div>
+      <div class="profile-val">{{ user.date_joined|date:"d.m.Y" }}</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <form method="post" action="{% url 'iuu:logout' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn" style="background:transparent;border:1px solid var(--border);color:var(--muted);font-weight:500">
+      Выйти из аккаунта
+    </button>
+  </form>
+</div>
+{% endblock %}

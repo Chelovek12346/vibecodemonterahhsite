@@ -4,6 +4,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "change-me-in-production"
 
+API_KEY = "AIzaSyA0XheMLwF4L0ZYdYvLjDyN_UWEu6yxEw8"
+
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
